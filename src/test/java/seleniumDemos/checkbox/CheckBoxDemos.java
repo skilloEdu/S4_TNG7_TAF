@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -18,7 +19,7 @@ public class CheckBoxDemos {
     WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
-    @BeforeTest
+    @BeforeMethod
     public void tearUp() {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
@@ -38,6 +39,7 @@ public class CheckBoxDemos {
         //1.3. Texts and Messages or Alerts etc.
 
         //Test Case navigation
+        System.out.println("CHECKBOX_URL");
         driver.get(CHECKBOX_URL);
 
         //Test Case navigation verification
@@ -45,6 +47,7 @@ public class CheckBoxDemos {
 
         //Test case selenium interactions
         // We need to create a webElement with the Selenium library
+        String text  = "SomeTextInputHere";
         WebElement checkBox1 = driver.findElement(By.xpath("//input[contains(@value,'option-1')]"));
 
         wait.until(ExpectedConditions.visibilityOf(checkBox1));

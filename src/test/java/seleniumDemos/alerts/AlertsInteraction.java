@@ -1,6 +1,5 @@
 package seleniumDemos.alerts;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,9 +16,7 @@ public class AlertsInteraction {
     //Test cases consts
     private final static String BASE_URL = "https://www.selenium.dev/";
     private final int WAIT = 3333;
-
-    WebDriver driver  = new ChromeDriver();
-
+    WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
     @BeforeTest

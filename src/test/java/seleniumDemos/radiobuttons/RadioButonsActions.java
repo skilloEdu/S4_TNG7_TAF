@@ -65,7 +65,6 @@ public class RadioButonsActions {
     @Test
     public void verifyRadioButtonCanBeSelectedAndDeselected() throws InterruptedException {
 
-
         //1 Test case local vars
         //1 .1. Navigation vars
         String RADIOBUTTONS_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";

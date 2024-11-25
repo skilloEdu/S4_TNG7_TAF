@@ -1,50 +1,86 @@
 package seleniumTests.myfirstseltest;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+import java.util.List;
+
+import java.time.Duration;
+import java.util.List;
+
 public class MyFirstSeleniumTest {
-
     @Test
-    public void myFirstSeleniumTestHere() throws InterruptedException {
-        int WAIT = 4444;
-        String baseURL = "https://www.google.bg/";
-        String searchQuery = "My First Selenium Test Lives Here";
+    public void testLogin() {
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        // Open iskillo page
+        driver.get("http://training.skillo-bg.com:4300/posts/all");
 
-        WebDriver driver = new ChromeDriver();
+        //validate page title is matching the expected page
+        String pageTitle = driver.getTitle();
+        Assert.assertEquals("ISkillo", pageTitle);
 
-        driver.get(baseURL);
+        //Click on Login link
+        WebElement loginLink = driver.findElement(By.id("nav-link-login"));
+        loginLink.click();
 
-        // Step 1: Close AgreeAll window
-        WebElement agreeWithAllTermsBtn = driver.findElement(By.cssSelector("#L2AGLb"));
-        agreeWithAllTermsBtn.click();
+        //Validate URL
+        String expectedLoginPageUrl = "http://training.skillo-bg.com:4300/users/login";
+        String actualLoginPageUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualLoginPageUrl, expectedLoginPageUrl, "Login page URL is incorrect!");
 
-        //Step 2: Provide search query
-        WebElement searchInputField = driver.findElement(By.cssSelector("#APjFqb"));
-        searchInputField.sendKeys(searchQuery);
+        //Validate Sign in form is visible
+        WebElement signInElement = driver.findElement(By.xpath("//p[text()='Sign in']"));
+        Assert.assertTrue(signInElement.isDisplayed(), "The 'Sign in' form is not displayed!");
 
-        //Step 3: Submit the search query
-//      WebElement searchSubmitBtn = driver.findElement(By.xpath("(//input[contains(@type,'submit')])[3]"));
-//       searchSubmitBtn.click();
-        searchInputField.sendKeys(Keys.ENTER);
-        Thread.sleep(WAIT);
+        //Enter valid email address
+        //WebElement userNameField = driver.findElement(By.xpath("//*[@id=\"defaultLoginFormUsername\"]"));
+        WebElement userNameField = driver.findElement(By.id("defaultLoginFormUsername"));
+        userNameField.sendKeys("BlaBlaBlo@abv.bg");
 
-        //Step 4 : Navigate Back
-        driver.navigate().back();
-        Thread.sleep(WAIT);
+        //Enter valid password
+        WebElement passwordField = driver.findElement(By.id("defaultLoginFormPassword"));
+        passwordField.sendKeys("111111A");
 
-        //Step 4 : Navigate forward
-        driver.navigate().forward();
-        Thread.sleep(WAIT);
+        //Click on Remember me button
+        WebElement rememberMeCheckbox = driver.findElement(By.xpath("//*[@formcontrolname=\"rememberMe\"]"));
+        rememberMeCheckbox.click();
 
-        //How to close browser
+        //Validate Remember me is checked
+        Assert.assertTrue(rememberMeCheckbox.isSelected(), "The Remember me checkbox is not selected");
+
+        //Check Sign in button is enabled
+        WebElement signInButton = driver.findElement(By.id("sign-in-button"));
+        Assert.assertTrue(signInButton.isEnabled());
+
+        //Click on Sign in button
+        signInButton.click();
+
+        //Check profile link is present
+        WebElement profileLink = driver.findElement(By.id("nav-link-profile"));
+        Assert.assertTrue(profileLink.isDisplayed(), "The profile link is not displayed!");
+
+        //Click on link Profile
+        profileLink.click();
+
+        //Validate username on profile page
+        WebElement userNameProfilePage = driver.findElement(By.tagName("h2"));
+        String actualUserName = userNameProfilePage.getText();
+        String expectedUserName = "BlaBlaBlo";
+        Assert.assertEquals(actualUserName, expectedUserName);
+
+        //Validate current user URL
+        String userUrl = driver.getCurrentUrl();
+        String expectedUserUrl = "http://training.skillo-bg.com:4300/users/5049";
+        Assert.assertEquals(userUrl, expectedUserUrl);
+
         driver.close();
-
-
     }
 }

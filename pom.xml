@@ -31,7 +31,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <testng.version>7.10.2</testng.version>
-    <selenium.version>4.21.0</selenium.version>
+    <selenium.version>4.25.0</selenium.version>
   </properties>
 
   <build>
@@ -67,16 +67,19 @@
       <artifactId>testng</artifactId>
       <version>${testng.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>${selenium.version}</version>
     </dependency>
+
     <dependency>
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>5.8.0</version>
     </dependency>
+
 
     <!--   Logging     -->
     <dependency>
