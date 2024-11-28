@@ -10,9 +10,6 @@ public class StartFirstTimeSelenium {
     public void verifyIcanStartSeleniumOnMachine() throws InterruptedException {
 
         WebDriver driver =new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver",
-                             "C:\\BROWSERS\\chromedriver.exe");
-
 
         Thread.sleep(4444);
 

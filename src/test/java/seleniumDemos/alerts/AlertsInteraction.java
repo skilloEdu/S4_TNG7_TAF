@@ -2,6 +2,7 @@ package seleniumDemos.alerts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +17,7 @@ public class AlertsInteraction {
     //Test cases consts
     private final static String BASE_URL = "https://www.selenium.dev/";
     private final int WAIT = 3333;
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = new FirefoxDriver();
     WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
     @BeforeTest
@@ -83,11 +84,12 @@ public class AlertsInteraction {
 
         //Move a bit down to see the alert button
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300)", "");
+        js.executeScript("window.scrollBy(0,600)", "");
 
         //Test case selenium interactions
         // We need to create a webElement with the Selenium library
-        WebElement confirmationAlertButton = driver.findElement(By.linkText("See a sample confirm"));
+
+        WebElement confirmationAlertButton = driver.findElement(By.xpath("//h2[contains(@id,'confirm')]/../p[5]/a"));
         wait.until(ExpectedConditions.visibilityOf(confirmationAlertButton));
         confirmationAlertButton.click();
 
