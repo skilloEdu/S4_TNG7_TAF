@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -17,7 +16,7 @@ public class AlertsInteraction {
     //Test cases consts
     private final static String BASE_URL = "https://www.selenium.dev/";
     private final int WAIT = 3333;
-    WebDriver driver = new FirefoxDriver();
+    WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
     @BeforeTest
@@ -84,7 +83,7 @@ public class AlertsInteraction {
 
         //Move a bit down to see the alert button
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,600)", "");
+        js.executeScript("window.scrollBy(0,750)", "");
 
         //Test case selenium interactions
         // We need to create a webElement with the Selenium library

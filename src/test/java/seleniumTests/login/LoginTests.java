@@ -89,13 +89,13 @@ public class LoginTests {
 
 
        // Step 2 provide username
-       String USER = "PeterJohns";
+       String USER = "n3TestingDemo";
        usernameInputField.clear();
        usernameInputField.sendKeys(USER);
 
        //Step 3 provide password
        WebElement userPasswordInputField = driver.findElement(By.cssSelector("#defaultLoginFormPassword"));
-       String PASSWORD = "123456789";
+       String PASSWORD = "testing!";
 
        userPasswordInputField.clear();
        userPasswordInputField.sendKeys(PASSWORD);
@@ -116,14 +116,7 @@ public class LoginTests {
        Assert.assertEquals(actualErrorMsg,expectedErrorMSg);
 
 
-
        Thread.sleep(3333);
-
-
-
-
-
-
    }
 
     @AfterMethod

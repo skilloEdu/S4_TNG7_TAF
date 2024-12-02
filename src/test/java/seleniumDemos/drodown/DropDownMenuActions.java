@@ -37,22 +37,10 @@ public class DropDownMenuActions {
         //1 .1. Navigation vars
         String DROPDOWN_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
         String EXPEXTED_DROPDOWN_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
-        //1.2. WebElements locatorStrategies
-
-        //1.3. Texts and Messages or Alerts etc.
 
         //Test Case navigation
         driver.get(DROPDOWN_URL);
 
-        //Test Case navigation verification
-        wait.until(ExpectedConditions.urlContains(EXPEXTED_DROPDOWN_URL));
-
-        //Test case selenium interactions
-        // We need to create a webElement with the Selenium library
-
-
-
-        //Test Case real functionality checks
         // User selenium library Select
         Select dropDOwnMenuSelectionOption = new Select(driver.findElement(By.id("dropdowm-menu-1")));
 

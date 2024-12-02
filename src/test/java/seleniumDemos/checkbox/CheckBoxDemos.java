@@ -47,7 +47,6 @@ public class CheckBoxDemos {
 
         //Test case selenium interactions
         // We need to create a webElement with the Selenium library
-        String text  = "SomeTextInputHere";
         WebElement checkBox1 = driver.findElement(By.xpath("//input[contains(@value,'option-1')]"));
 
         wait.until(ExpectedConditions.visibilityOf(checkBox1));
@@ -70,10 +69,6 @@ public class CheckBoxDemos {
         //1 .1. Navigation vars
         String CHECKBOX_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
         String EXPEXTED_CHECKBOX_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
-        //1.2. WebElements locatorStrategies
-        String idLocatorForAlertWindow = "alertButton";
-
-        //1.3. Texts and Messages or Alerts etc.
 
         //Test Case navigation
         driver.get(CHECKBOX_URL);
