@@ -1,4 +1,4 @@
-package seleniumDemos.webelements;
+package homework.seleniumDemos.webelements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

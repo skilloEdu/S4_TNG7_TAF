@@ -1,4 +1,4 @@
-package seleniumDemos.alerts;
+package homework.seleniumDemos.alerts;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;

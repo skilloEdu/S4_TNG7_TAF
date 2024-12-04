@@ -1,4 +1,4 @@
-package DEMOS;
+package homework.DEMOS;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

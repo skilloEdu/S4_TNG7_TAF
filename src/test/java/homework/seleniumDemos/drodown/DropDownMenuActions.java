@@ -1,25 +1,28 @@
-package seleniumDemos.checkbox;
+package homework.seleniumDemos.drodown;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
-public class CheckBoxDemos {
+public class DropDownMenuActions {
     //Test cases consts
     private final static String BASE_URL = "https://webdriveruniversity.com/";
     private final int WAIT = 3333;
     WebDriver driver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(driver , Duration.ofSeconds(10));
 
-    @BeforeMethod
+    @BeforeTest
     public void tearUp() {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
@@ -32,34 +35,34 @@ public class CheckBoxDemos {
 
         //1 Test case local vars
         //1 .1. Navigation vars
-        String CHECKBOX_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
-        String EXPEXTED_CHECKBOX_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
-        //1.2. WebElements locatorStrategies
-
-        //1.3. Texts and Messages or Alerts etc.
+        String DROPDOWN_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
+        String EXPEXTED_DROPDOWN_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
 
         //Test Case navigation
-        System.out.println("CHECKBOX_URL");
-        driver.get(CHECKBOX_URL);
+        driver.get(DROPDOWN_URL);
 
-        //Test Case navigation verification
-        wait.until(ExpectedConditions.urlContains(EXPEXTED_CHECKBOX_URL));
+        // User selenium library Select
+        Select dropDOwnMenuSelectionOption = new Select(driver.findElement(By.id("dropdowm-menu-1")));
 
-        //Test case selenium interactions
-        // We need to create a webElement with the Selenium library
-        WebElement checkBox1 = driver.findElement(By.xpath("//input[contains(@value,'option-1')]"));
-
-        wait.until(ExpectedConditions.visibilityOf(checkBox1));
-        wait.until(ExpectedConditions.elementToBeClickable(checkBox1));
-
-        //Test Case real functionality checks
-        checkBox1.click();
-
-        //Test case verifications
-        boolean isCHeckBoxSelected = checkBox1.isSelected();
-        Assert.assertTrue(isCHeckBoxSelected);
-
+        //DropDown interactions
+        //Select a dropdown  option by index
+        dropDOwnMenuSelectionOption.selectByIndex(1);
         Thread.sleep(WAIT);
+
+        dropDOwnMenuSelectionOption.selectByIndex(2);
+        Thread.sleep(WAIT);
+
+        dropDOwnMenuSelectionOption.selectByIndex(3);
+        Thread.sleep(WAIT);
+
+        //Select a dropdown by Visible value
+        dropDOwnMenuSelectionOption.selectByVisibleText("JAVA");
+        Thread.sleep(WAIT);
+
+        //Select a dropdown option by Value
+        dropDOwnMenuSelectionOption.selectByValue("c#");
+        Thread.sleep(WAIT);
+
     }
 
     @Test
@@ -69,6 +72,10 @@ public class CheckBoxDemos {
         //1 .1. Navigation vars
         String CHECKBOX_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
         String EXPEXTED_CHECKBOX_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
+        //1.2. WebElements locatorStrategies
+        String idLocatorForAlertWindow = "alertButton";
+
+        //1.3. Texts and Messages or Alerts etc.
 
         //Test Case navigation
         driver.get(CHECKBOX_URL);
@@ -98,45 +105,6 @@ public class CheckBoxDemos {
         Thread.sleep(WAIT);
     }
 
-    @Test
-    public void verifyCheckBoxesCanBeSelectedAndDeselected() throws InterruptedException {
-
-        //1 Test case local vars
-        //1 .1. Navigation vars
-        String CHECKBOX_URL = BASE_URL+"Dropdown-Checkboxes-RadioButtons/index.html";
-        String EXPEXTED_CHECKBOX_URL = "https://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html";
-        //1.2. WebElements locatorStrategies
-        String idLocatorForAlertWindow = "alertButton";
-
-        //1.3. Texts and Messages or Alerts etc.
-
-        //Test Case navigation
-        driver.get(CHECKBOX_URL);
-
-        //Test Case navigation verification
-        wait.until(ExpectedConditions.urlContains(EXPEXTED_CHECKBOX_URL));
-
-        //Test case selenium interactions
-        // We need to create a webElement with the Selenium library
-        WebElement checkBox1 = driver.findElement(By.xpath("//input[contains(@value,'option-1')]"));
-
-        wait.until(ExpectedConditions.visibilityOf(checkBox1));
-        wait.until(ExpectedConditions.elementToBeClickable(checkBox1));
-
-        //Test Case real functionality checks
-        checkBox1.click();
-
-        //Test case verifications
-        boolean isCHeckBoxSelected = checkBox1.isSelected();
-        Assert.assertTrue(isCHeckBoxSelected);
-
-        //Deselect checkbox
-        checkBox1.click();
-        isCHeckBoxSelected = checkBox1.isSelected();
-        Assert.assertFalse(isCHeckBoxSelected);
-
-        Thread.sleep(WAIT);
-    }
 
     @AfterTest
     public void tearDown(){

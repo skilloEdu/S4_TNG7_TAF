@@ -1,4 +1,4 @@
-package seleniumTests.login;
+package homework.seleniumTests.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

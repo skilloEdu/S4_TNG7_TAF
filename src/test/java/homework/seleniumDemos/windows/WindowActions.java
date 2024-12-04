@@ -1,4 +1,4 @@
-package seleniumDemos.windows;
+package homework.seleniumDemos.windows;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;

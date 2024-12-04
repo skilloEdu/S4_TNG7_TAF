@@ -1,4 +1,4 @@
-package seleniumDemos.takescreenshot;
+package homework.seleniumDemos.takescreenshot;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
